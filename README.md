@@ -191,9 +191,7 @@ It includes:
 
 ## Authors
 
-- **João Vitor [Sobrenome]** — Study design, data collection, analysis, manuscript
-- **Everton Falcão de Oliveira** — Supervision, methodology, revision
-- **Audêncio Victor [Sobrenome]** — Statistical modelling, code, revision
+- **Audêncio Victor** — Statistical modelling, code, revision
 
 **Institutional affiliation:** Universidade Federal de Mato Grosso do Sul (UFMS), Faculdade de Medicina, Campo Grande, MS, Brazil
 
@@ -204,7 +202,7 @@ It includes:
 If you use this code or data, please cite:
 
 ```
-[Sobrenome] JV, Oliveira EF, [Sobrenome] AV. Temporal trends and epidemiological
+JV, Oliveira EF, [Sobrenome] AV. Temporal trends and epidemiological
 profile of cardiovascular disease mortality in Campo Grande, Mato Grosso do Sul,
 Brazil, 2013–2022. Mem Inst Oswaldo Cruz. 2026; [submitted].
 ```
