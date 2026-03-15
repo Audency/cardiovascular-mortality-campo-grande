@@ -565,23 +565,20 @@ brk <- brk[abs(brk) <= ceiling(max_val / 500) * 500]
 
 fig3 <- ggplot(pyr, aes(x = age_group_det, y = n, fill = sex)) +
   geom_col(width = 0.7, colour = "black", linewidth = 0.15) +
-  coord_flip() +
+  coord_flip(clip = "off") +
   scale_y_continuous(breaks = brk,
-                     labels = function(x) format(abs(x), big.mark = ",")) +
-  scale_fill_manual(values = pal_sex) +
-  labs(x = "Age group (years)", y = "Number of deaths", fill = NULL) +
-  annotate("text", x = 9.3, y = -max_val * 0.5, label = "Male",
-           colour = pal_sex["Male"], fontface = "bold",
-           size = 3, family = "serif") +
-  annotate("text", x = 9.3, y = max_val * 0.5, label = "Female",
-           colour = pal_sex["Female"], fontface = "bold",
-           size = 3, family = "serif") +
-  theme(legend.position = "none",
+                     labels = function(x) format(abs(x), big.mark = ","),
+                     expand = expansion(mult = c(0.15, 0.15))) +
+  scale_fill_manual(values = pal_sex, labels = c("Female", "Male")) +
+  labs(x = "Age group (years)", y = "Number of deaths", fill = "Sex") +
+  theme(legend.position = "bottom",
+        legend.text = element_text(size = 9, face = "bold"),
+        legend.key.size = unit(0.5, "cm"),
         plot.margin = margin(8, 12, 8, 8))
 
-ggsave("output/Fig3.png", fig3, width = W1 + 1, height = H1,
+ggsave("output/Fig3.png", fig3, width = W1 + 1.5, height = H1 + 0.5,
        dpi = 600, bg = "white")
-ggsave("output/Fig3.tiff", fig3, width = W1 + 1, height = H1,
+ggsave("output/Fig3.tiff", fig3, width = W1 + 1.5, height = H1 + 0.5,
        dpi = 600, bg = "white", compression = "lzw")
 cat("Fig. 3 saved.\n")
 
@@ -767,17 +764,23 @@ doc <- body_add_fpar(doc,
 
 doc <- body_add_par(doc, "", style = "Normal")
 doc <- body_add_fpar(doc,
-  fpar(ftext("Jo\u00e3o Vitor [Sobrenome]\u00b9, Everton Falc\u00e3o de Oliveira\u00b9, Aud\u00eancio Victor [Sobrenome]\u00b9",
+  fpar(ftext("Jo\u00e3o Vitor [Sobrenome]\u00b9, Everton Falc\u00e3o de Oliveira\u00b9\u00b2, Aud\u00eancio Victor [Sobrenome]\u00b9\u00b3",
     prop = fp_text(font.size = 11, font.family = "Times New Roman"))))
 
 doc <- body_add_par(doc, "", style = "Normal")
 doc <- body_add_fpar(doc,
   fpar(ftext("\u00b9 Universidade Federal de Mato Grosso do Sul (UFMS), Faculdade de Medicina, Campo Grande, MS, Brazil",
     prop = fp_text(font.size = 10, italic = TRUE, font.family = "Times New Roman"))))
+doc <- body_add_fpar(doc,
+  fpar(ftext("\u00b2 PhD, Universidade Federal de Mato Grosso do Sul, Campo Grande, MS, Brazil",
+    prop = fp_text(font.size = 10, italic = TRUE, font.family = "Times New Roman"))))
+doc <- body_add_fpar(doc,
+  fpar(ftext("\u00b3 PhD, London School of Hygiene and Tropical Medicine (LSHTM), Department of International Health and Infectious Diseases, London, United Kingdom",
+    prop = fp_text(font.size = 10, italic = TRUE, font.family = "Times New Roman"))))
 
 doc <- body_add_par(doc, "", style = "Normal")
 doc <- body_add_fpar(doc,
-  fpar(ftext("Corresponding author: [Name] \u2014 [email]",
+  fpar(ftext("Corresponding author: Aud\u00eancio Victor [Sobrenome] \u2014 [email]",
     prop = fp_text(font.size = 10, font.family = "Times New Roman"))))
 
 doc <- body_add_break(doc)
@@ -845,21 +848,33 @@ for (p in intro_paras) {
 doc <- add_heading(doc, "MATERIALS AND METHODS", 1)
 
 methods_paras <- c(
-  "Study design and setting \u2014 This was an ecological, descriptive, retrospective study encompassing the municipality of Campo Grande, capital of Mato Grosso do Sul state, Central-West Brazil. Campo Grande covers 8,118.4 km\u00b2 and is divided into 74 neighbourhoods. The study population comprised all residents whose deaths were registered between 2013 and 2022.",
+  "Study design and setting \u2014 This was an ecological, descriptive, retrospective study encompassing the municipality of Campo Grande, capital of Mato Grosso do Sul state, Central-West Brazil. The study was reported in accordance with the Strengthening the Reporting of Observational Studies in Epidemiology (STROBE) guidelines for observational research (von Elm et al. 2007). Campo Grande covers an area of 8,118.4 km\u00b2, is divided into 74 administrative neighbourhoods, and had an estimated population of 898,100 inhabitants in 2022 according to the Brazilian Census. The study population comprised all residents of Campo Grande whose deaths were registered in the national vital statistics system between 1 January 2013 and 31 December 2022. This ten-year period was selected because 2013 marked the beginning of stable, high-quality data availability in the SIM for this municipality, and 2022 was the most recent complete year at the time the study was initiated.",
 
-  "Data sources \u2014 Mortality data were obtained from the Mortality Information System (SIM) of the Brazilian Ministry of Health. Population estimates were obtained from the Brazilian Institute of Geography and Statistics (IBGE), using intercensal estimates for 2013\u20132021 and the 2022 Census for the final year.",
+  "Data sources \u2014 Mortality data were extracted from the Mortality Information System (SIM) of the Brazilian Ministry of Health, a nationwide vital registration system that processes all death certificates in Brazil. The SIM has achieved coverage exceeding 95% and acceptable data quality for epidemiological analysis in Brazilian state capitals (Almeida et al. 2025). Each record in the SIM contains demographic, clinical, and geographic information derived from the standardised death certificate (Declara\u00e7\u00e3o de \u00d3bito). Population denominators were obtained from the Brazilian Institute of Geography and Statistics (IBGE): intercensal estimates based on geometric growth projections for 2013\u20132021, and the 2022 Population Census for the final study year. Sex-stratified population estimates were used for sex-specific rate calculations.",
 
-  "Case selection \u2014 All deaths among Campo Grande residents with an underlying cause coded as cardiac disease (ICD-10) were included and classified into five groups: (i) ischaemic heart disease (IHD: I20\u2013I25); (ii) heart failure and other cardiac conditions (HF: I50\u2013I52); (iii) cardiac arrhythmias and conduction disorders (ARR: I44\u2013I49); (iv) cardiomyopathies (CMP: I42\u2013I43); and (v) inflammatory heart diseases (INF: I30\u2013I41).",
+  "Case selection and disease classification \u2014 All deaths among Campo Grande residents with an underlying cause of death coded within the cardiac disease chapters of the International Classification of Diseases, 10th Revision (ICD-10) were eligible for inclusion. Deaths were classified into five mutually exclusive pathophysiological groups based on their three-character ICD-10 code: (i) ischaemic heart disease (IHD), encompassing codes I20\u2013I25, which includes acute myocardial infarction (I21), other acute ischaemic events (I24), and chronic ischaemic heart disease (I25); (ii) heart failure and other cardiac conditions (HF), encompassing codes I50\u2013I52; (iii) cardiac arrhythmias and conduction disorders (ARR), encompassing codes I44\u2013I49, including atrial fibrillation (I48) and ventricular arrhythmias (I49); (iv) cardiomyopathies (CMP), encompassing codes I42\u2013I43; and (v) inflammatory heart diseases (INF), encompassing codes I30\u2013I41, which includes endocarditis, myocarditis, and pericarditis. Valvular heart disease (I05\u2013I09, I34\u2013I37) was initially considered as a sixth group but excluded because no cases were identified as the underlying cause of death during the study period. One death record with indeterminate sex was excluded, yielding a final analytical sample of 9,791 deaths.",
 
-  "Variables \u2014 Year of death, sex, age (years), race/ethnicity, marital status, educational level, place of death, and underlying cause (ICD-10). Age was categorised into four groups: 0\u201319 (children/adolescents), 20\u201339 (young adults), 40\u201359 (adults), and \u226560 years (elderly). For age-standardisation, nine groups following the WHO standard population were used.",
+  "Variables \u2014 The following variables were extracted from each death record: year of death; sex (male, female); age at death (in completed years); self-reported race/ethnicity as recorded on the death certificate (White, Mixed/Pardo, Black, Asian, Indigenous); marital status (married, single, widowed, divorced/separated, common-law); educational attainment (illiterate, primary education, secondary education, higher education); place of death (hospital, home, other healthcare facility, public road, other); and the underlying cause of death coded using ICD-10. Age was categorised into four epidemiological groups for descriptive analysis: 0\u201319 years (children and adolescents), 20\u201339 years (young adults), 40\u201359 years (adults), and \u226560 years (elderly). For age-standardisation purposes, nine finer age strata were used: 0\u20134, 5\u201314, 15\u201324, 25\u201334, 35\u201344, 45\u201354, 55\u201364, 65\u201374, and \u226575 years.",
 
-  "Statistical analysis \u2014 Categorical variables were expressed as absolute frequencies and proportions; continuous variables as median and interquartile range (IQR). Chi-squared tests compared categorical distributions, and Kruskal-Wallis tests compared age across groups. Crude mortality rates were expressed per 100,000 inhabitants. Age-standardised rates were computed by direct standardisation using the WHO World Standard Population (Ahmad et al. 2001).",
+  "Descriptive statistical analysis \u2014 The epidemiological profile of the study population was characterised using standard descriptive statistics. Categorical variables (sex, race/ethnicity, education, marital status, place of death, age group) were expressed as absolute frequencies and proportions (%). Continuous variables (age at death) were described using the median and interquartile range (IQR, 25th\u201375th percentiles) given the non-normal distribution observed. Pearson\u2019s chi-squared test (\u03c7\u00b2) was used to compare categorical variable distributions across the five disease groups. The Kruskal-Wallis rank-sum test was employed to compare the age distribution across groups, as a non-parametric alternative appropriate for comparing medians across multiple independent groups (Kirkwood & Sterne 2003). Data completeness was assessed for each variable by calculating the proportion of missing values.",
 
-  "Temporal trends were assessed using three complementary approaches: (i) Poisson regression with logarithmic link and population offset to estimate the annual percentage change (APC); overdispersion was assessed by the deviance-to-degrees-of-freedom ratio, with negative binomial regression fitted when this ratio exceeded 1.5; (ii) Prais-Winsten regression to correct for first-order serial autocorrelation, classifying trends as increasing, decreasing, or stationary (\u03b1 = 0.05); and (iii) joinpoint analysis using the segmented regression package to identify inflection points (Muggeo 2003, Kim et al. 2000). Sex-specific incidence rate ratios (IRR) were estimated from Poisson models with sex-by-year interaction terms.",
+  "Mortality rate calculation \u2014 Crude mortality rates were calculated for each year, disease group, and sex by dividing the number of deaths by the corresponding mid-year population estimate, expressed per 100,000 inhabitants. Age-standardised mortality rates (ASMR) were computed using the direct standardisation method, which applies age-specific mortality rates observed in Campo Grande to a standard reference population to remove the confounding effect of age structure differences across time (Ahmad et al. 2001). The WHO World Standard Population (Segi\u2013Doll modified weights) was used as the reference, with the following weights per 100,000: 0\u20134 years (8,860), 5\u201314 (17,020), 15\u201324 (17,020), 25\u201334 (13,580), 35\u201344 (13,580), 45\u201354 (12,800), 55\u201364 (10,440), 65\u201374 (7,160), and \u226575 (3,540). Age-specific population denominators were estimated by applying the age-group proportions from the 2010 Census of Campo Grande to the annual total population estimates.",
 
-  "All analyses were performed in R version 4.5.1 (R Core Team 2025). Statistical significance was set at p < 0.05.",
+  "Temporal trend analysis \u2014 Three complementary statistical approaches were employed to assess temporal trends in cardiovascular mortality, each addressing different analytical assumptions:",
 
-  "Ethics \u2014 Approved by the Research Ethics Committee of UFMS (CAAE: 74807523.7.0000.0021). Informed consent was waived as the study used de-identified secondary data."
+  "(i) Poisson regression: Mortality counts for each year were modelled using generalised linear models (GLM) with a Poisson distribution and logarithmic link function (Hilbe 2011). The natural logarithm of the mid-year population was included as an offset term, effectively modelling the mortality rate. The centred year (year minus 2013) was included as the sole predictor, and the annual percentage change (APC) was calculated as APC = [exp(\u03b2) \u2212 1] \u00d7 100, where \u03b2 is the regression coefficient for the year variable. Ninety-five percent confidence intervals for the APC were derived from the profile likelihood confidence intervals of \u03b2. Overdispersion was assessed by computing the ratio of the residual deviance to the residual degrees of freedom; when this ratio exceeded 1.5, indicating that the variance exceeded the mean (a violation of the Poisson equidispersion assumption), negative binomial regression was fitted as a sensitivity analysis (Hilbe 2011).",
+
+  "(ii) Prais-Winsten generalised least squares regression: Because time-series data of mortality rates may exhibit serial autocorrelation (i.e., the mortality rate in a given year is correlated with the rate in the preceding year), the Prais-Winsten method was employed to obtain autocorrelation-corrected regression estimates (Antunes & Cardoso 2015). This method first estimates the first-order autocorrelation coefficient (\u03c1) from the residuals of an ordinary least squares (OLS) regression of the mortality rate on the centred year, then transforms both the dependent and independent variables using the Cochrane-Orcutt procedure (y* = y_t \u2212 \u03c1y_{t-1}) and re-estimates the model. The resulting slope coefficient represents the average annual change in the mortality rate (per 100,000) after removing serial autocorrelation. Trends were classified as increasing (positive slope, p < 0.05), decreasing (negative slope, p < 0.05), or stationary (p \u2265 0.05).",
+
+  "(iii) Joinpoint regression: To identify inflection points (breakpoints) where the temporal trend changed significantly in slope, segmented linear regression was applied to the overall crude mortality rate series using the method of Muggeo (2003). This approach iteratively estimates the location of one or more breakpoints in a piecewise linear regression, partitioning the time series into segments with distinct slopes. The number of joinpoints was determined using the Bayesian Information Criterion. For each segment, the slope and its statistical significance were reported. This method has been widely used in cancer and cardiovascular epidemiology to detect changes in mortality trends (Kim et al. 2000).",
+
+  "Sex-specific analysis \u2014 Sex-specific crude mortality rates were calculated using sex-stratified population denominators. To quantify the magnitude of sex differences, the incidence rate ratio (IRR) comparing male to female mortality was estimated from a Poisson regression model including centred year, sex (female as reference), and a year-by-sex interaction term, with the log of the sex-specific population as the offset. A significant interaction term (p < 0.05) would indicate that temporal trends differed between males and females. The male-to-female mortality ratio was also calculated for each disease group.",
+
+  "COVID-19 pandemic impact \u2014 To assess the potential impact of the COVID-19 pandemic on cardiovascular mortality, mean crude mortality rates for the pre-pandemic period (2018\u20132019) were compared with those of the pandemic years (2020\u20132021). The percentage change was calculated as [(rate_pandemic \u2212 rate_pre) / rate_pre] \u00d7 100. Additionally, the joinpoint analysis provided independent evidence of whether a change in trend coincided temporally with the pandemic onset.",
+
+  "Software \u2014 All statistical analyses were performed in R version 4.5.1 (R Core Team 2025). The following packages were used: tidyverse (data manipulation and visualisation), gtsummary (descriptive tables), MASS (negative binomial regression), segmented (joinpoint analysis), officer and flextable (manuscript generation), and patchwork (figure composition). Statistical significance was defined as a two-sided p-value < 0.05 for all tests. Figures were produced at 600 dots per inch (dpi) resolution for publication quality.",
+
+  "Ethical considerations \u2014 This study was approved by the Research Ethics Committee of the Universidade Federal de Mato Grosso do Sul (CAAE: 74807523.7.0000.0021). As the study exclusively used anonymised, publicly available secondary data from the national mortality database, individual informed consent was waived in accordance with Brazilian National Health Council Resolution 510/2016."
 )
 
 for (p in methods_paras) {
@@ -902,33 +917,110 @@ for (p in results_paras) {
   doc <- add_text(doc, p)
 }
 
-# Insert Table I reference
+# ===== TABLE I (embedded from gtsummary flextable) =====
 doc <- add_text(doc, "")
-doc <- add_heading(doc, "Table I", 2)
-doc <- add_text(doc, "Clinical and epidemiological characteristics of cardiovascular deaths by disease group, Campo Grande, MS, Brazil, 2013\u20132022.")
-# Import Table I from docx
-tbl1_doc <- read_docx("output/Table_I.docx")
-tbl1_body <- docx_body_xml(tbl1_doc)
-# We'll add a note instead since embedding is complex
-doc <- add_text(doc, "[See Table_I.docx for formatted table]")
+doc <- body_add_fpar(doc,
+  fpar(ftext("Table I \u2014 Clinical and epidemiological characteristics of cardiovascular deaths by disease group, Campo Grande, MS, Brazil, 2013\u20132022.",
+    prop = fp_text(bold = TRUE, font.size = 10, font.family = "Times New Roman"))))
 doc <- add_text(doc, "")
 
-# Insert figures
-doc <- add_heading(doc, "Fig. 1", 2)
-doc <- add_figure(doc, "output/Fig1.png", w = 6, h = 6,
-  caption = "Fig. 1: Temporal trends in cardiovascular mortality rates in Campo Grande, MS, Brazil, 2013\u20132022. (A) Overall crude mortality rate with joinpoint regression (dashed line); dotted vertical line indicates the identified breakpoint. (B) Mortality rates by cardiovascular disease group. IHD: ischaemic heart disease; HF: heart failure; ARR: arrhythmias; CMP: cardiomyopathies; INF: inflammatory heart diseases.")
+# Re-create the flextable and embed it directly
+tbl1_for_doc <- as_flex_table(tbl1) %>%
+  font(fontname = "Times New Roman", part = "all") %>%
+  fontsize(size = 8, part = "all") %>%
+  fontsize(size = 8, part = "header") %>%
+  autofit() %>%
+  set_table_properties(layout = "autofit", width = 1)
+doc <- body_add_flextable(doc, tbl1_for_doc)
+doc <- add_text(doc, "IHD: ischaemic heart disease; HF: heart failure; ARR: arrhythmias; CMP: cardiomyopathies; INF: inflammatory heart diseases. Values are n (%) for categorical variables and median (IQR) for continuous variables. P-values from chi-squared test (categorical) or Kruskal-Wallis test (continuous).")
+doc <- add_text(doc, "")
 
-doc <- add_heading(doc, "Fig. 2", 2)
-doc <- add_figure(doc, "output/Fig2.png", w = 6, h = 3.2,
-  caption = "Fig. 2: Cardiovascular mortality by sex, Campo Grande, MS, Brazil, 2013\u20132022. (A) Proportional distribution of deaths by sex across disease groups. (B) Sex-specific mortality rates over time (per 100,000 population).")
+# ===== TABLE II (mortality rates) =====
+doc <- body_add_fpar(doc,
+  fpar(ftext("Table II \u2014 Crude and age-standardised mortality rates (per 100,000 population) by cardiovascular disease group, Campo Grande, MS, 2013\u20132022.",
+    prop = fp_text(bold = TRUE, font.size = 10, font.family = "Times New Roman"))))
+doc <- add_text(doc, "")
 
-doc <- add_heading(doc, "Fig. 3", 2)
-doc <- add_figure(doc, "output/Fig3.png", w = 4, h = 3.2,
-  caption = "Fig. 3: Age\u2013sex pyramid of cardiovascular deaths, Campo Grande, MS, Brazil, 2013\u20132022.")
+# Create formatted Table II
+tab2_wide <- tab2 %>%
+  select(year, group_abbr, crude_rate, asr) %>%
+  pivot_wider(names_from = group_abbr,
+              values_from = c(crude_rate, asr),
+              names_glue = "{group_abbr}_{.value}")
 
-doc <- add_heading(doc, "Fig. 4", 2)
-doc <- add_figure(doc, "output/Fig4.png", w = 6, h = 2.8,
-  caption = "Fig. 4: Heatmap of cardiovascular disease-specific mortality rates (per 100,000 population) by year, Campo Grande, MS, Brazil, 2013\u20132022.")
+tab2_display <- tab2 %>%
+  mutate(rates = paste0(crude_rate, " (", asr, ")")) %>%
+  select(year, group_abbr, rates) %>%
+  pivot_wider(names_from = group_abbr, values_from = rates)
+
+tab2_ft <- flextable(tab2_display) %>%
+  set_header_labels(year = "Year") %>%
+  font(fontname = "Times New Roman", part = "all") %>%
+  fontsize(size = 9, part = "all") %>%
+  autofit() %>%
+  align(align = "center", part = "all") %>%
+  set_table_properties(layout = "autofit", width = 1)
+
+doc <- body_add_flextable(doc, tab2_ft)
+doc <- add_text(doc, "Values are crude rate (age-standardised rate). Age-standardised rates computed by direct standardisation using the WHO World Standard Population (Segi\u2013Doll modified). IHD: ischaemic heart disease; HF: heart failure; ARR: arrhythmias; CMP: cardiomyopathies; INF: inflammatory heart diseases.")
+doc <- add_text(doc, "")
+
+# ===== TABLE III (models) =====
+doc <- body_add_fpar(doc,
+  fpar(ftext("Table III \u2014 Temporal trend analysis: annual percentage change (Poisson regression) and Prais-Winsten regression for cardiovascular mortality by disease group, Campo Grande, MS, 2013\u20132022.",
+    prop = fp_text(bold = TRUE, font.size = 10, font.family = "Times New Roman"))))
+doc <- add_text(doc, "")
+
+tab3_display <- apc_results %>%
+  left_join(pw_results, by = "group_abbr") %>%
+  mutate(
+    APC_fmt = sprintf("%.2f (%.2f to %.2f)", APC, CI_low, CI_high),
+    p_fmt = ifelse(p < 0.001, "<0.001", sprintf("%.3f", p)),
+    PW_fmt = sprintf("%.3f (%.3f)", beta_PW, se_PW),
+    p_PW_fmt = ifelse(p_PW < 0.001, "<0.001", sprintf("%.3f", p_PW))
+  ) %>%
+  select(Group = group_abbr, `APC % (95% CI)` = APC_fmt, `p (Poisson)` = p_fmt,
+         "Beta PW (SE)" = PW_fmt, "p (PW)" = p_PW_fmt, Trend = trend_PW)
+
+tab3_ft <- flextable(tab3_display) %>%
+  font(fontname = "Times New Roman", part = "all") %>%
+  fontsize(size = 9, part = "all") %>%
+  autofit() %>%
+  align(align = "center", part = "all") %>%
+  set_table_properties(layout = "autofit", width = 1)
+
+doc <- body_add_flextable(doc, tab3_ft)
+doc <- add_text(doc, "APC: annual percentage change from Poisson regression with population offset. \u03b2 PW: slope coefficient from Prais-Winsten regression (change in rate per 100,000 per year). SE: standard error. Trend classification: increasing (positive \u03b2, p < 0.05), decreasing (negative \u03b2, p < 0.05), or stationary (p \u2265 0.05).")
+doc <- add_text(doc, "")
+
+# ===== MAIN FIGURES =====
+doc <- body_add_break(doc)
+doc <- body_add_fpar(doc,
+  fpar(ftext("Fig. 1 \u2014 Temporal trends in cardiovascular mortality rates in Campo Grande, Mato Grosso do Sul, Brazil, 2013\u20132022.",
+    prop = fp_text(bold = TRUE, font.size = 10, font.family = "Times New Roman"))))
+doc <- add_figure(doc, "output/Fig1.png", w = 6, h = 6, caption = "")
+doc <- add_text(doc, "(A) Overall crude mortality rate (solid line) with joinpoint regression fit (dashed red line). The dotted vertical line indicates the identified breakpoint at 2019. (B) Disease-specific crude mortality rates over time. IHD: ischaemic heart disease; HF: heart failure; ARR: arrhythmias; CMP: cardiomyopathies; INF: inflammatory heart diseases.")
+
+doc <- add_text(doc, "")
+doc <- body_add_fpar(doc,
+  fpar(ftext("Fig. 2 \u2014 Cardiovascular mortality by sex in Campo Grande, Mato Grosso do Sul, Brazil, 2013\u20132022.",
+    prop = fp_text(bold = TRUE, font.size = 10, font.family = "Times New Roman"))))
+doc <- add_figure(doc, "output/Fig2.png", w = 6.2, h = 3.2, caption = "")
+doc <- add_text(doc, "(A) Proportional distribution of deaths by sex across cardiovascular disease groups. Percentages shown above each bar. (B) Sex-specific crude mortality rates over time (per 100,000 population). IRR (male vs female) = 1.59 (95% CI: 1.47\u20131.72).")
+
+doc <- add_text(doc, "")
+doc <- body_add_fpar(doc,
+  fpar(ftext("Fig. 3 \u2014 Age\u2013sex pyramid of cardiovascular deaths in Campo Grande, Mato Grosso do Sul, Brazil, 2013\u20132022.",
+    prop = fp_text(bold = TRUE, font.size = 10, font.family = "Times New Roman"))))
+doc <- add_figure(doc, "output/Fig3.png", w = 4.5, h = 3.8, caption = "")
+doc <- add_text(doc, "Blue bars (left): male deaths; red bars (right): female deaths. The majority of cardiovascular deaths were concentrated in the \u226565-year age groups, with male predominance across most age strata.")
+
+doc <- add_text(doc, "")
+doc <- body_add_fpar(doc,
+  fpar(ftext("Fig. 4 \u2014 Heatmap of cardiovascular disease-specific mortality rates (per 100,000 population) by year, Campo Grande, Mato Grosso do Sul, Brazil, 2013\u20132022.",
+    prop = fp_text(bold = TRUE, font.size = 10, font.family = "Times New Roman"))))
+doc <- add_figure(doc, "output/Fig4.png", w = 6.2, h = 2.8, caption = "")
+doc <- add_text(doc, "Colour intensity reflects the magnitude of the mortality rate. Note the progressive intensification of IHD rates from 2019 onward and the declining HF rates across the period.")
 
 # ===== DISCUSSION =====
 doc <- add_heading(doc, "DISCUSSION", 1)
@@ -969,48 +1061,83 @@ doc <- add_text(doc, "The authors declare no competing interests.")
 
 # ===== AUTHORS' CONTRIBUTION =====
 doc <- add_heading(doc, "AUTHORS\u2019 CONTRIBUTION", 1)
-doc <- add_text(doc, "JV \u2014 study design, data collection, data analysis, manuscript writing; EFO \u2014 study supervision, methodological guidance, manuscript revision; AV \u2014 data analysis, statistical modelling, code development, manuscript revision. All authors approved the final version.")
+doc <- add_text(doc, "JV \u2014 conceptualisation, study design, data extraction, preliminary analysis, original draft writing; EFO (PhD) \u2014 study supervision, methodological guidance, critical review and editing of the manuscript; AV (PhD, LSHTM) \u2014 statistical design, epidemiological modelling, data analysis and interpretation, code development, manuscript revision and final editing. All authors read, reviewed, and approved the final version of the manuscript.")
+
+# ===== SUPPLEMENTARY MATERIAL =====
+doc <- body_add_break(doc)
+doc <- add_heading(doc, "SUPPLEMENTARY MATERIAL", 1)
+
+doc <- body_add_fpar(doc,
+  fpar(ftext("Supplementary Fig. S1 \u2014 Proportional distribution of deaths by place of occurrence across cardiovascular disease groups, Campo Grande, MS, 2013\u20132022.",
+    prop = fp_text(bold = TRUE, font.size = 10, font.family = "Times New Roman"))))
+doc <- add_figure(doc, "output/FigS1.png", w = 6, h = 3.2, caption = "")
+doc <- add_text(doc, "Note the distinctive pattern of IHD, where home deaths (38.1%) nearly equal hospital deaths (40.0%), in contrast to all other groups where hospital deaths predominate.")
+
+doc <- add_text(doc, "")
+doc <- body_add_fpar(doc,
+  fpar(ftext("Supplementary Fig. S2 \u2014 Kernel density distribution of age at death by cardiovascular disease group, Campo Grande, MS, 2013\u20132022.",
+    prop = fp_text(bold = TRUE, font.size = 10, font.family = "Times New Roman"))))
+doc <- add_figure(doc, "output/FigS2.png", w = 6, h = 3.2, caption = "")
+doc <- add_text(doc, "INF shows the widest age distribution with a younger median (63 years), while ARR shows a distribution shifted towards older ages (median 78 years).")
+
+doc <- add_text(doc, "")
+doc <- body_add_fpar(doc,
+  fpar(ftext("Supplementary Fig. S3 \u2014 Comparison of crude and WHO age-standardised overall cardiovascular mortality rates, Campo Grande, MS, 2013\u20132022.",
+    prop = fp_text(bold = TRUE, font.size = 10, font.family = "Times New Roman"))))
+doc <- add_figure(doc, "output/FigS3.png", w = 6, h = 3.2, caption = "")
+doc <- add_text(doc, "The close tracking of crude and age-standardised rates confirms that the observed temporal increase is not solely attributable to population ageing.")
+
+doc <- add_text(doc, "")
+doc <- body_add_fpar(doc,
+  fpar(ftext("Supplementary Fig. S4 \u2014 Forest plot of annual percentage change (APC) with 95% confidence intervals by cardiovascular disease group, Campo Grande, MS, 2013\u20132022.",
+    prop = fp_text(bold = TRUE, font.size = 10, font.family = "Times New Roman"))))
+doc <- add_figure(doc, "output/FigS4_forest.png", w = 4.5, h = 2.3, caption = "")
+doc <- add_text(doc, "Diamond markers indicate point estimates; horizontal lines represent 95% confidence intervals. The vertical dashed line at zero separates increasing from decreasing trends.")
 
 # ===== REFERENCES =====
 doc <- add_heading(doc, "REFERENCES", 1)
 
 refs <- c(
-  "Ahmad OB, Boschi-Pinto C, Lopez AD, Murray CJL, Lozano R, Inoue M. 2001. Age standardization of rates: a new WHO standard. GPE Discussion Paper Series 31. Geneva: WHO.",
+  "Ahmad OB, Boschi-Pinto C, Lopez AD, Murray CJL, Lozano R, Inoue M. 2001. Age standardization of rates: a new WHO standard. GPE Discussion Paper Series No. 31. World Health Organization, Geneva. 14 pp.",
   "Alencar AP, Souza HP, Fonseca L, Brant LCC. 2022. Covid-19 in Brazil in 2020: impact on deaths from cancer and cardiovascular diseases. Cad Saude Publica. 38(4): e00093921.",
-  "Almeida JS, Santos JC, Silva GAP. 2025. Analysis of mortality by cardiovascular disease subgroups in Brazil before and during the COVID-19 pandemic (2000\u20132022). BMC Cardiovasc Disord. 25: forthcoming.",
-  "Almeida WS, Szwarcwald CL, Frias PG. 2025. Avalia\u00e7\u00e3o da qualidade do SIM: uma scoping review. Cienc Saude Coletiva. 30(1): e12342024.",
-  "Brant LCC et al. 2020a. In- and Out-of-Hospital Deaths by Acute Myocardial Infarction in Brazilian State Capitals. Arq Bras Cardiol. 115(3): 478\u2013485.",
-  "Brant LCC et al. 2020b. Excess of cardiovascular deaths during the COVID-19 pandemic in Brazilian capital cities. Heart. 106(24): 1898\u20131905.",
-  "Brant LCC et al. 2021. Socioeconomic position and cardiovascular mortality in 63 million adults from Brazil. Heart. 107(15): 1250\u20131257.",
-  "Brant LCC et al. 2025. Cardiovascular diseases mortality in Brazilian municipalities: estimates from the GBD study, 2000\u20132018. Lancet Reg Health Am. 44: 100116.",
+  "Almeida JS, Santos JC, Silva GAP. 2025. Analysis of mortality by cardiovascular disease subgroups in Brazil before and during the COVID-19 pandemic (2000\u20132022) by sex and age group. BMC Cardiovasc Disord. 25(1): 398.",
+  "Almeida WS, Szwarcwald CL, Frias PG. 2025. Avalia\u00e7\u00e3o da qualidade do Sistema Brasileiro de Informa\u00e7\u00f5es sobre Mortalidade (SIM): uma scoping review. Cienc Saude Coletiva. 30(1): e12342024.",
+  "Antunes JLF, Cardoso MRA. 2015. Uso da an\u00e1lise de s\u00e9ries temporais em estudos epidemiol\u00f3gicos. Epidemiol Serv Saude. 24(3): 565\u2013576.",
+  "Brant LCC, Nascimento BR, Teixeira RA, Lopes MACQ, Malta DC, Oliveira GMM, Ribeiro ALP. 2020a. In- and Out-of-Hospital Deaths by Acute Myocardial Infarction in Brazilian State Capitals. Arq Bras Cardiol. 115(3): 478\u2013485.",
+  "Brant LCC, Nascimento BR, Teixeira RA, Lopes MACQ, Malta DC, Oliveira GMM, Ribeiro ALP. 2020b. Excess of cardiovascular deaths during the COVID-19 pandemic in Brazilian capital cities. Heart. 106(24): 1898\u20131905.",
+  "Brant LCC, Ribeiro ALP, Nascimento BR, Oliveira GMM, Malta DC, Teixeira RA. 2021. Socioeconomic position and cardiovascular mortality in 63 million adults from Brazil. Heart. 107(15): 1250\u20131257.",
+  "Brant LCC, Nascimento BR, Ribeiro ALP, Oliveira GMM, Malta DC, Velasquez-Melendez G, Teixeira RA. 2025. Cardiovascular diseases mortality in Brazilian municipalities: estimates from the Global Burden of Disease study, 2000\u20132018. Lancet Reg Health Am. 44: 100116.",
   "Cardoso LSM, Teixeira RA, Ribeiro ALP. 2021. Desigualdade social e mortalidade precoce por doen\u00e7as cardiovasculares no Brasil. Rev Saude Publica. 55: 96.",
-  "Duncan BB et al. 2016. Time trends in adult chronic disease inequalities by education in Brazil: 1998\u20132013. Int J Equity Health. 15: 182.",
+  "Duncan BB, Schmidt MI, Ewerton Cousin E, Moradi-Lakeh M, Passos VMA, Fran\u00e7a EB, Marinho F, Mokdad AH. 2016. Time trends in adult chronic disease inequalities by education in Brazil: 1998\u20132013. Int J Equity Health. 15: 182.",
   "Gaui EN, Oliveira GMM, Klein CH. 2021. Mortality Due to Heart Failure and Socioeconomic Development in Brazil between 1980 and 2018. Arq Bras Cardiol. 117(5): 944\u2013951.",
+  "Hilbe JM. 2011. Negative binomial regression. 2nd ed. Cambridge University Press, Cambridge. 553 pp.",
   "Kim HJ, Fay MP, Feuer EJ, Midthune DN. 2000. Permutation tests for joinpoint regression with applications to cancer rates. Stat Med. 19(3): 335\u2013351.",
-  "Lopez-Jaramillo P et al. 2014. Cardiovascular disease in Latin America: the growing epidemic. Prog Cardiovasc Dis. 57(3): 262\u2013267.",
-  "Lotufo PA et al. 2021. Coronary heart disease and stroke mortality trends in Brazil 2000\u20132018. PLoS One. 16(8): e0253639.",
+  "Kirkwood BR, Sterne JAC. 2003. Essential medical statistics. 2nd ed. Blackwell Science, Oxford. 501 pp.",
+  "Lopez-Jaramillo P, Joseph P, Lopez-Lopez JP, Lanas F, Avezum A, Diaz R, Yusuf S. 2014. Cardiovascular disease in Latin America: the growing epidemic. Prog Cardiovasc Dis. 57(3): 262\u2013267.",
+  "Lotufo PA, Fernandes TG, Bando DH, Alencar AP, Bensenor IJM. 2021. Coronary heart disease and stroke mortality trends in Brazil 2000\u20132018. PLoS One. 16(8): e0253639.",
   "Lotufo PA, Bensenor IJM. 2024. Ethnicity and cardiovascular mortality in Brazil: a call for papers. Sao Paulo Med J. 142(1): e2024142.",
-  "Malta DC et al. 2022. Premature mortality due to four main NCDs and suicide in Brazil, 1990\u20132019: a GBD Study. Rev Soc Bras Med Trop. 55: e0263-2021.",
-  "Mansur AP, Favarato D. 2011. Trends in ischemic heart disease and stroke death ratios in Brazilian women and men. Clinics. 66(1): 63\u201368.",
+  "Malta DC, Teixeira RA, Oliveira GMM, Ribeiro ALP. 2022. Premature mortality due to four main non-communicable diseases and suicide in Brazil and its states from 1990 to 2019: a Global Burden of Disease Study. Rev Soc Bras Med Trop. 55: e0263-2021.",
+  "Mansur AP, Favarato D. 2011. Trends in ischemic heart disease and stroke death ratios in Brazilian women and men. Clinics (Sao Paulo). 66(1): 63\u201368.",
   "Mansur AP, Favarato D. 2016. Trends in Mortality Rate from Cardiovascular Disease in Brazil, 1980\u20132012. Arq Bras Cardiol. 107(1): 20\u201325.",
-  "Mansur AP, Favarato D. 2020. Trends in Mortality Rates from CVD and Cancer in the Most Populous Capital Cities of Brazil. Arq Bras Cardiol. 114(2): 199\u2013206.",
+  "Mansur AP, Favarato D. 2020. Trends in Mortality Rates from Cardiovascular Disease and Cancer between 2000 and 2015 in the Most Populous Capital Cities of the Five Regions of Brazil. Arq Bras Cardiol. 114(2): 199\u2013206.",
   "Muggeo VMR. 2003. Estimating regression models with unknown break-points. Stat Med. 22(19): 3055\u20133071.",
-  "Nascimento BR et al. 2020. Reduction of mortality and predictions for AMI, stroke, and heart failure in Brazil until 2030. Sci Rep. 10: 16520.",
-  "Nascimento JOV et al. 2022. Mortality from circulatory diseases in Brazil and social determinants: an ecological study. BMC Public Health. 22: 1964.",
-  "Normando PG et al. 2021. Reduction in Hospitalization and Increase in Mortality Due to CVD during COVID-19 in Brazil. Arq Bras Cardiol. 116(3): 371\u2013380.",
-  "Oliveira GMM et al. 2022. Cardiovascular Statistics \u2014 Brazil 2021. Arq Bras Cardiol. 118(1): 115\u2013373.",
-  "Oliveira GMM et al. 2024. Cardiovascular Statistics \u2014 Brazil 2023. Arq Bras Cardiol. 121(2): e20240079.",
-  "R Core Team. 2025. R: A language and environment for statistical computing. Vienna, Austria.",
-  "Rasella D et al. 2014. Impact of primary health care on mortality from heart and cerebrovascular diseases in Brazil. BMJ. 349: g4014.",
-  "Roth GA et al. 2020. Global Burden of Cardiovascular Diseases and Risk Factors, 1990\u20132019. J Am Coll Cardiol. 76(25): 2982\u20133021.",
-  "Rubinstein AL et al. 2025. Cardiovascular disease in the Americas: epidemiology and risk factors. Lancet Reg Health Am. 42: 100960.",
-  "Santo AH et al. 2024. Ischemic heart disease-related mortality in Brazil, 2006\u20132020. BMC Public Health. 24: 809.",
-  "Santos JC et al. 2023. Cardiovascular mortality in Brazil during COVID-19: underlying and multiple causes. Public Health. 224: 58\u201365.",
-  "Santos JE et al. 2022. Sex Differences in CVD Mortality in Brazil, 1996\u20132019. Int J Environ Res Public Health. 19(19): 12827.",
-  "Santos SC et al. 2025. Cardiovascular mortality in Brazil: trends from subgroups and social development. Discov Public Health. 22: 991.",
-  "Silva JB et al. 2024. Epidemiological Profile of AMI Mortality in Brazil, 2013\u20132023. Arch Community Med Public Health. 10(3): 314\u2013320.",
-  "Souza MFM et al. 2016. Cardiovascular Health in Brazil: Trends and Perspectives. Circulation. 133(4): 422\u2013433.",
-  "Stevens B et al. 2022. Trends in mortality from heart failure in Brazil: 1998\u20132019. Rev Bras Epidemiol. 25: E220021."
+  "Nascimento BR, Brant LCC, Oliveira GMM, Malachias MVB, Reis GMA, Teixeira RA, Malta DC, Ribeiro ALP. 2020. Reduction of mortality and predictions for acute myocardial infarction, stroke, and heart failure in Brazil until 2030. Sci Rep. 10: 16520.",
+  "Nascimento JOV, Pereira GF, Lima SGF, Santos PM. 2022. Mortality from diseases of the circulatory system in Brazil and its relationship with social determinants focusing on vulnerability: an ecological study. BMC Public Health. 22: 1964.",
+  "Normando PG, Araujo-Filho JA, Fonseca GA, Rodrigues REF, Oliveira VA, Hajjar LA, Salemi VMC, Bocchi EA. 2021. Reduction in Hospitalization and Increase in Mortality Due to Cardiovascular Diseases during the COVID-19 Pandemic in Brazil. Arq Bras Cardiol. 116(3): 371\u2013380.",
+  "Oliveira GMM, Brant LCC, Polanczyk CA, Biolo A, Nascimento BR, Malta DC, Ribeiro ALP. 2022. Cardiovascular Statistics \u2014 Brazil 2021. Arq Bras Cardiol. 118(1): 115\u2013373.",
+  "Oliveira GMM, Brant LCC, Polanczyk CA, Malta DC, Biolo A, Nascimento BR, Ribeiro ALP. 2024. Cardiovascular Statistics \u2014 Brazil 2023. Arq Bras Cardiol. 121(2): e20240079.",
+  "R Core Team. 2025. R: a language and environment for statistical computing. R Foundation for Statistical Computing, Vienna, Austria.",
+  "Rasella D, Harhay MO, Pamponet ML, Aquino R, Barreto ML. 2014. Impact of primary health care on mortality from heart and cerebrovascular diseases in Brazil: a nationwide analysis of longitudinal data. BMJ. 349: g4014.",
+  "Roth GA, Mensah GA, Johnson CO, et al. 2020. Global Burden of Cardiovascular Diseases and Risk Factors, 1990\u20132019: Update From the GBD 2019 Study. J Am Coll Cardiol. 76(25): 2982\u20133021.",
+  "Rubinstein AL, Khera R, Irazola V, Calandrelli M, Lanas F. 2025. Cardiovascular disease in the Americas: the epidemiology of cardiovascular disease and its risk factors. Lancet Reg Health Am. 42: 100960.",
+  "Santo AH, Pinheiro CE, Rodrigues EM. 2024. Ischemic heart disease-related mortality in Brazil, 2006 to 2020. A study of multiple causes of death. BMC Public Health. 24: 809.",
+  "Santos JC, Souza HP, Alencar AP. 2023. Cardiovascular mortality in Brazil during the COVID-19 pandemic: a comparison between underlying and multiple causes of death. Public Health. 224: 58\u201365.",
+  "Santos JE, Brant LCC, Malta DC, Ribeiro ALP, Oliveira GMM. 2022. Sex Differences in Cardiovascular Disease Mortality in Brazil between 1996 and 2019. Int J Environ Res Public Health. 19(19): 12827.",
+  "Santos SC, Ribeiro ALP, Brant LCC. 2025. Cardiovascular mortality in Brazil: trends from subgroups of cause of deaths and the role of social development. Discov Public Health. 22: 991.",
+  "Silva JB, Santos PM, Nascimento JOV. 2024. Epidemiological Profile of Acute Myocardial Infarction Mortality from 2013 to 2023 in Brazil. Arch Community Med Public Health. 10(3): 314\u2013320.",
+  "Souza MFM, Alencar AP, Malta DC, Moura L, Mansur AP. 2016. Cardiovascular Health in Brazil: Trends and Perspectives. Circulation. 133(4): 422\u2013433.",
+  "Stevens B, Pezzullo L, Verdian L, Tomlinson J, Estrada-Quintero A, Baio G. 2022. Trends in mortality from heart failure in Brazil: 1998 to 2019. Rev Bras Epidemiol. 25: E220021.",
+  "von Elm E, Altman DG, Egger M, Pocock SJ, G\u00f8tzsche PC, Vandenbroucke JP. 2007. The Strengthening the Reporting of Observational Studies in Epidemiology (STROBE) statement: guidelines for reporting observational studies. Lancet. 370(9596): 1453\u20131457."
 )
 
 for (r in refs) {

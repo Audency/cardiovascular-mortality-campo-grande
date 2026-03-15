@@ -13,3 +13,4 @@ figuras/*.tiff
 # Dados brutos sensíveis (se necessário)
 # dados_cardio.csv
 # dados_cardio.rds
+output/~$*
