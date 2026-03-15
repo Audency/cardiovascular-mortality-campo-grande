@@ -1,0 +1,255 @@
+Temporal trends and epidemiological profile of cardiovascular disease mortality in Campo Grande, Mato Grosso do Sul, Brazil, 2013-2022
+
+João Vitor [Sobrenome]¹, Everton Falcão de Oliveira¹, Audêncio Victor [Sobrenome]¹, [demais autores]
+
+¹ Universidade Federal de Mato Grosso do Sul (UFMS), Faculdade de Medicina, Campo Grande, MS, Brasil.
+
+Corresponding author: [nome] — [e-mail]
+
+ABSTRACT
+
+BACKGROUND Cardiovascular diseases (CVD) remain the leading cause of death worldwide. In Brazil, regional disparities in CVD mortality persist, yet epidemiological data from the Central-West region are scarce.
+
+OBJECTIVES To describe the epidemiological profile and temporal trends of cardiovascular mortality in Campo Grande, Mato Grosso do Sul, from 2013 to 2022.
+
+METHODS An ecological, descriptive, retrospective study was conducted using data from the Mortality Information System (SIM). Deaths were classified into five groups: ischaemic heart disease (IHD), heart failure (HF), arrhythmias (ARR), cardiomyopathies (CMP), and inflammatory heart diseases (INF). Crude and age-standardised mortality rates were calculated. Temporal trends were assessed using Poisson regression, Prais-Winsten regression, and joinpoint analysis.
+
+FINDINGS A total of 9,791 cardiac deaths were recorded. IHD accounted for 77.4% of cases. An annual percentage change (APC) of +3.3% (95% CI: 2.5-4.0) was observed. Males had 59% higher mortality (IRR = 1.59; 95% CI: 1.47-1.72). A joinpoint at 2019 marked acceleration in mortality, coinciding with the COVID-19 pandemic.
+
+MAIN CONCLUSIONS Cardiovascular mortality in Campo Grande showed a significant increasing trend over the decade, driven primarily by ischaemic heart disease, with marked sex and age disparities.
+
+Key words: cardiovascular diseases; mortality; epidemiology; ecological study; Brazil
+
+
+INTRODUCTION
+
+Cardiovascular diseases (CVD) are the leading cause of death globally, responsible for an estimated 19.1 million deaths in 2020, accounting for approximately 32% of all deaths worldwide (Roth et al. 2020). In low- and middle-income countries, the burden is disproportionately high, and Latin America faces a growing epidemic driven by the epidemiological transition (Lopez-Jaramillo et al. 2014, Rubinstein et al. 2025).
+
+In Brazil, CVD has consistently ranked as the primary cause of mortality for decades, with approximately 400,000 deaths per year attributed to diseases of the circulatory system (Oliveira et al. 2022). National studies have documented declining trends in age-standardised CVD mortality between 1990 and 2017, attributed to improvements in risk factor control, expanded primary healthcare, and advances in emergency care (Souza et al. 2016, Lotufo et al. 2021). However, this overall decline masks important regional heterogeneities: the Central-West and North regions have shown persistently higher or stagnating rates compared with the South and Southeast (Mansur & Favarato 2016, Brant et al. 2025).
+
+Within the CVD spectrum, ischaemic heart disease (IHD) — particularly acute myocardial infarction (AMI) — constitutes the single largest contributor to cardiovascular mortality in Brazil (Santo et al. 2024, Silva et al. 2024). Heart failure (HF) mortality, by contrast, has shown a declining national trend that has been attributed to therapeutic advances in pharmacological management (Gaui et al. 2021, Stevens et al. 2022). Cardiac arrhythmias, cardiomyopathies, and inflammatory heart diseases, though less prevalent as underlying causes, contribute meaningfully to the overall burden and have been less thoroughly studied at the subnational level (Oliveira et al. 2024).
+
+Sociodemographic disparities in CVD mortality are well-documented in Brazil. Males exhibit consistently higher mortality rates from IHD (Mansur & Favarato 2011, Santos et al. 2022), while lower educational attainment and lower socioeconomic status are associated with premature cardiovascular death (Brant et al. 2021, Cardoso et al. 2021, Duncan et al. 2016). Racial and ethnic disparities have also been reported, with Black and mixed-race populations experiencing higher cardiovascular mortality in some regions (Lotufo & Bensenor 2024). Furthermore, the place of death — whether in-hospital, at home, or in public spaces — serves as an indirect marker of access to emergency cardiovascular care, with a high proportion of out-of-hospital AMI deaths suggesting delays in seeking or accessing treatment (Brant et al. 2020a).
+
+The COVID-19 pandemic profoundly affected cardiovascular mortality patterns in Brazil. Studies have documented excess cardiovascular deaths during 2020-2021, attributed to reduced hospital admissions, delayed presentations, and direct effects of SARS-CoV-2 infection on the cardiovascular system (Brant et al. 2020b, Normando et al. 2021, Alencar et al. 2022, Almeida et al. 2025). In Brazilian state capitals, excess cardiovascular mortality during the pandemic reached 15-20% above pre-pandemic levels (Santos et al. 2023).
+
+Campo Grande, the capital of Mato Grosso do Sul state, had an estimated population of 898,100 inhabitants in 2022 and is the largest city in the Central-West border region. Despite its demographic and epidemiological significance, no comprehensive analysis of cardiovascular mortality trends has been conducted for this municipality. Understanding local patterns is essential for guiding public health policy and resource allocation.
+
+The objective of this study was to characterise the epidemiological profile and analyse the temporal trends of mortality from cardiovascular diseases in Campo Grande, Mato Grosso do Sul, from 2013 to 2022, stratified by disease group, sex, age, and sociodemographic variables.
+
+
+MATERIALS AND METHODS
+
+Study design and setting — This was an ecological, descriptive, retrospective study encompassing the municipality of Campo Grande, capital of Mato Grosso do Sul state, located in the Central-West region of Brazil. Campo Grande covers an area of 8,118.4 km² and is administratively divided into 74 neighbourhoods. The study population comprised all residents of Campo Grande whose deaths were registered between 2013 and 2022. The ten-year period was selected because 2013 marked the beginning of stable data availability in the SIM database, and 2022 was the most recent year with complete data at the time the study was initiated.
+
+Data sources — Mortality data were obtained from the Mortality Information System (SIM) of the Brazilian Ministry of Health. The SIM is a national vital registration system that has achieved adequate coverage (>95%) and acceptable quality for epidemiological analysis in state capitals since the early 2000s (Almeida et al. 2025). Population estimates were obtained from the Brazilian Institute of Geography and Statistics (IBGE), using intercensal estimates for 2013-2021 and the 2022 Census for the final year.
+
+Case selection — All deaths among Campo Grande residents with an underlying cause of death coded as a cardiac disease according to the International Classification of Diseases, 10th Revision (ICD-10) were included. Deaths were classified into five mutually exclusive pathophysiological groups: (i) ischaemic heart disease (IHD: I20-I25); (ii) heart failure and other cardiac conditions (HF: I50-I52); (iii) cardiac arrhythmias and conduction disorders (ARR: I44-I49); (iv) cardiomyopathies (CMP: I42-I43); and (v) inflammatory heart diseases, including pericarditis, endocarditis, and myocarditis (INF: I30-I41). Valvular heart disease cases (I05-I09, I34-I37) were initially considered but excluded from the analysis because no cases were identified as underlying cause of death.
+
+Variables — The following variables were extracted from the SIM: year of death, sex, age (in years), race/ethnicity (White, Mixed/Pardo, Black, Asian, Indigenous), marital status, educational level (illiterate, primary, secondary, higher education), place of death (hospital, home, other healthcare facility, public road, other), and underlying cause of death (ICD-10 code). Age was categorised into four groups for epidemiological analysis: 0-19 years (children/adolescents), 20-39 years (young adults), 40-59 years (adults), and ≥60 years (elderly). For age-standardisation, nine age groups were used following the WHO standard population (Segi-Doll modified).
+
+Statistical analysis — Descriptive statistics were used to characterise the study population. Categorical variables were expressed as absolute frequencies and proportions; continuous variables as median and interquartile range (IQR). Chi-squared tests were used for comparisons of categorical variables across disease groups, and the Kruskal-Wallis test was used for age comparisons.
+
+Crude mortality rates were calculated as the number of deaths divided by the mid-year population estimate, expressed per 100,000 inhabitants. Age-standardised mortality rates were computed by direct standardisation using the WHO World Standard Population as reference (Ahmad et al. 2001).
+
+Temporal trends were assessed using three complementary approaches:
+
+(i) Poisson regression with a logarithmic link function and population offset was used to estimate the annual percentage change (APC) in mortality rates. Overdispersion was assessed by comparing the deviance to the residual degrees of freedom; when the dispersion ratio exceeded 1.5, negative binomial regression was fitted as a sensitivity analysis (Hilbe 2011).
+
+(ii) Prais-Winsten regression was employed to correct for first-order serial autocorrelation in the time series of mortality rates, classifying trends as increasing, decreasing, or stationary based on the significance of the slope coefficient at α = 0.05 (Antunes & Cardoso 2015).
+
+(iii) Joinpoint analysis was conducted using the segmented regression package in R to identify inflection points in the temporal trend, with the number of joinpoints estimated using the Bayesian Information Criterion (Muggeo 2003, Kim et al. 2000).
+
+Sex-specific mortality rates were calculated using sex-stratified population denominators. The incidence rate ratio (IRR) comparing male-to-female mortality was estimated from the Poisson model with a sex-by-year interaction term.
+
+All analyses were performed in R version 4.5.1 (R Core Team 2025), using the packages tidyverse, gtsummary, MASS, segmented, and patchwork. Statistical significance was set at p < 0.05. Figures were produced following journal standards at 300 dpi resolution.
+
+Ethics — This study was approved by the Research Ethics Committee of the Federal University of Mato Grosso do Sul (CAAE: 74807523.7.0000.0021). As the study used publicly available, de-identified secondary data, informed consent was waived.
+
+
+RESULTS
+
+Overview and epidemiological profile — During the study period (2013-2022), a total of 76,688 deaths were registered in Campo Grande. Of these, 9,791 (12.8%) had a cardiac disease as the underlying cause of death. One record with indeterminate sex was excluded, yielding 9,791 deaths for analysis.
+
+IHD was the predominant group, accounting for 7,579 deaths (77.4%), followed by HF with 746 (7.6%), ARR with 673 (6.9%), CMP with 514 (5.3%), and INF with 279 (2.9%). Within IHD, acute myocardial infarction (ICD-10: I21) was responsible for 6,468 deaths (85.3% of IHD cases).
+
+The median age at death was 70 years (IQR: 60-80). Age varied significantly across groups (Kruskal-Wallis p < 0.001): ARR had the highest median age (78 years), followed by HF (74), CMP (70), IHD (69), and INF (63). Males accounted for 59.3% of all cardiovascular deaths (n = 5,805). Male predominance was observed in IHD (61.0%), INF (61.6%), and CMP (59.7%), whereas ARR was the only group with female predominance (52.2%). The sex distribution differed significantly across groups (χ² = 65.6, df = 4, p < 0.001).
+
+Regarding race/ethnicity, White individuals comprised 52.9% of deaths, followed by Mixed/Pardo (41.6%), Black (4.1%), Asian (0.9%), and Indigenous (0.4%). The most frequent educational level was primary education (48.8%), followed by secondary (24.2%), illiterate (14.1%), and higher education (7.1%). Data on education were missing for 5.8% of records (Table I).
+
+Place of death — Overall, 48.4% of deaths occurred in hospitals, 32.9% at home, 12.6% in other healthcare facilities, 4.4% in other locations, and 1.6% on public roads. A distinctive pattern emerged for IHD: the proportion of home deaths (38.1%) was remarkably close to hospital deaths (40.0%), a pattern not observed in other groups. For HF, ARR, CMP, and INF, hospital deaths predominated (range: 65.2-92.5%) (Supplementary Fig. S1).
+
+Temporal trends — The overall crude cardiovascular mortality rate increased from 99.3 per 100,000 population in 2013 to 133.6 per 100,000 in 2022, representing a 34.5% increase over the decade. The number of deaths rose from 827 in 2013 to 1,200 in 2022 (+45.1%).
+
+Poisson regression analysis — The overall APC was +3.3% per year (95% CI: 2.5-4.0%; p < 0.001). Given the overdispersion ratio of 3.73, negative binomial regression confirmed a similar APC of +3.2% (Table III). Group-specific trends showed marked heterogeneity:
+
+- IHD: APC +4.3% (95% CI: 3.5-5.1; p < 0.001) — significant increasing trend
+- ARR: APC +9.5% (95% CI: 6.6-12.6; p < 0.001) — fastest relative increase
+- INF: APC +8.4% (95% CI: 4.0-13.1; p < 0.001) — significant increase
+- HF: APC −8.7% (95% CI: −11.0 to −6.4; p < 0.001) — significant declining trend
+- CMP: APC −3.8% (95% CI: −6.7 to −0.8; p = 0.012) — significant decline
+
+Prais-Winsten regression — After correcting for serial autocorrelation (ρ = 0.243), the overall trend remained significantly increasing (β = 4.15 per 100,000/year; SE = 1.22; p = 0.011). By group, IHD (β = 3.91; p = 0.001), ARR (β = 0.71; p < 0.001), and INF (β = 0.31; p = 0.001) showed increasing trends, while HF and CMP were classified as stationary after autocorrelation correction (Table III).
+
+Joinpoint analysis — A single joinpoint was identified at 2019 (Fig. 1A). Before 2019, the trend was non-significant (slope: +1.3/100,000 per year; p > 0.05); after 2019, a significant acceleration was observed (slope: +9.0/100,000 per year; p < 0.01), coinciding with the onset of the COVID-19 pandemic.
+
+Sex-specific analysis — Males consistently exhibited higher mortality rates than females throughout the study period. The overall IRR was 1.59 (95% CI: 1.47-1.72), indicating that men had 59% higher cardiovascular mortality than women after adjusting for population denominators. Male mortality rose from 127.0 to 163.3 per 100,000, while female mortality rose from 72.9 to 104.6 per 100,000 (Fig. 2B). The sex-by-year interaction was not significant (p = 0.304), indicating that temporal trends were parallel across sexes.
+
+The male-to-female mortality ratio varied by disease group: INF (1.61), IHD (1.56), CMP (1.48), HF (1.06), and ARR (0.92). Thus, ARR was the only group with a female excess in mortality.
+
+Age-specific analysis — The burden of cardiovascular mortality was overwhelmingly concentrated among elderly individuals (≥60 years), who accounted for 75.3% of all deaths. Mortality rates in the ≥60 group ranged from 511 to 729 per 100,000 over the study period, compared with 84-111 per 100,000 in the 40-59 group and 8-18 per 100,000 in the 20-39 group. The age-standardised rates tracked closely with crude rates (Supplementary Fig. S3), confirming that the observed increase was not solely driven by population ageing.
+
+COVID-19 impact — Comparison of the pre-pandemic period (2018-2019) with the pandemic years (2020-2021) revealed a 15.3% increase in the mean cardiovascular mortality rate (from 107.5 to 123.9 per 100,000). This increase was most pronounced for IHD, with 843 deaths in 2020 and 958 in 2021, compared with a pre-pandemic annual average of 765 deaths (2018-2019). The joinpoint at 2019 further supports the pandemic's role in accelerating cardiovascular mortality.
+
+
+DISCUSSION
+
+This study provides the first comprehensive analysis of cardiovascular mortality trends in Campo Grande over a ten-year period. The main findings were: (i) an increasing overall trend of +3.3% per year, primarily driven by IHD; (ii) heterogeneous trends across disease groups, with ARR and INF increasing and HF and CMP declining; (iii) a 59% higher mortality in males; (iv) a high proportion of IHD deaths occurring at home (38.1%); and (v) a significant acceleration in mortality after 2019, temporally associated with the COVID-19 pandemic.
+
+The increasing trend in IHD mortality contrasts with national data showing declining age-standardised rates between 2000 and 2018 (Lotufo et al. 2021, Mansur & Favarato 2016). However, this national decline has been geographically uneven, with the Central-West region showing slower improvement compared to the South and Southeast (Brant et al. 2025). Municipal-level analyses from the GBD study have revealed that many medium-sized cities outside the southern axis continue to experience rising IHD mortality, particularly when crude rates are considered alongside population ageing (Nascimento et al. 2020). Our findings are consistent with this pattern and underscore the need for intensified cardiovascular prevention strategies in Campo Grande.
+
+The observed APC of +4.3% for IHD is higher than the national average but comparable to rates reported for other Central-West capitals. Silva et al. (2024) documented increasing AMI mortality in several Brazilian regions between 2013 and 2023, particularly in areas with lower healthcare infrastructure density. Santo et al. (2024) similarly identified IHD as a persistent and growing challenge when multiple causes of death are considered, suggesting that official statistics based solely on underlying cause may underestimate the true burden.
+
+The declining trend in HF mortality (−8.7% per year by Poisson regression) aligns with national findings reported by Gaui et al. (2021), who documented a significant decrease in HF mortality between 1980 and 2018, attributed to advances in pharmacological treatment, including the widespread adoption of renin-angiotensin-aldosterone system inhibitors and beta-blockers. Stevens et al. (2022) confirmed this declining national trend through 2019. The reclassification of Prais-Winsten results as stationary for HF suggests that the decline may have decelerated in recent years, a hypothesis warranting further investigation.
+
+The marked increase in ARR mortality (+9.5% per year) deserves particular attention. This finding may partly reflect improvements in diagnostic and coding practices for arrhythmia-related deaths, rather than a true epidemiological increase (Oliveira et al. 2024). Nevertheless, the ageing population and increasing prevalence of atrial fibrillation may also contribute to this trend. The female predominance in ARR mortality is consistent with the higher prevalence of atrial fibrillation among elderly women, who constitute a growing demographic segment in Campo Grande.
+
+One of the most clinically significant findings of this study is the high proportion of IHD deaths occurring at home (38.1%), nearly equal to hospital deaths (40.0%). This pattern stands in stark contrast to other disease groups, where hospital deaths predominated (65-93%). Brant et al. (2020a) reported similar findings for AMI in Brazilian state capitals, documenting that 40-50% of AMI deaths occurred out-of-hospital. These deaths likely represent sudden cardiac events in which patients either did not recognise symptoms, delayed calling emergency services, or experienced barriers to accessing timely care. In the context of Campo Grande, this finding has direct implications for public health: it suggests a need for expanded public education campaigns on AMI symptom recognition, strengthened SAMU (Emergency Medical Service) response capacity, and improved distribution of automated external defibrillators in public spaces.
+
+The male predominance in cardiovascular mortality (IRR = 1.59) is consistent with both national and international literature. Santos et al. (2022) documented higher CVD mortality in Brazilian males across all age groups, with sex-specific differences attributed to biological factors (hormonal protection in pre-menopausal women), behavioural risk factors (higher smoking and alcohol consumption among men), and differential healthcare-seeking behaviour. Our finding that the sex gap remained stable over time (non-significant interaction term) suggests that these underlying determinants have not substantially shifted in Campo Grande during the study period.
+
+The racial/ethnic composition of cardiovascular deaths (52.9% White, 41.6% Pardo) broadly reflects the demographic composition of Campo Grande's population. While the proportion of White deaths appears slightly higher than the population share, this may reflect the older age structure of the White population in the city rather than a true excess risk (Lotufo & Bensenor 2024). Educational attainment, with nearly half of deaths occurring among individuals with only primary education, mirrors national data linking lower education to higher cardiovascular mortality (Brant et al. 2021, Cardoso et al. 2021). Nascimento et al. (2022) demonstrated that social vulnerability indices were significantly correlated with cardiovascular mortality at the municipal level in Brazil, reinforcing the role of social determinants.
+
+The acceleration in mortality after 2019, identified by joinpoint analysis, is consistent with the well-documented impact of the COVID-19 pandemic on cardiovascular outcomes. Brant et al. (2020b) demonstrated excess cardiovascular mortality in Brazilian state capitals during 2020, while Normando et al. (2021) reported a 15% reduction in cardiovascular hospitalisations accompanied by increased mortality, suggesting that patients avoided hospitals during the pandemic. Our observed 15.3% increase in cardiovascular mortality during 2020-2021 compared with 2018-2019 is consistent with these findings. Alencar et al. (2022) and Santos et al. (2023) further documented the synergistic effects of COVID-19 on cardiovascular mortality through both direct (myocardial injury, thrombotic events) and indirect (disrupted care pathways) mechanisms. Almeida et al. (2025) analysed cardiovascular mortality subgroups before and during the pandemic nationally, confirming differential impacts across disease categories, consistent with the heterogeneous group-specific trends observed in our study.
+
+The present study has several strengths. It covers a complete decade and uses multiple complementary statistical methods to assess temporal trends. The use of three approaches (Poisson regression, Prais-Winsten regression, and joinpoint analysis) provides robust evidence for trend direction and inflection points. The classification of cardiovascular deaths into pathophysiologically meaningful groups enables differentiated analysis beyond the aggregate CVD category. The data source (SIM) has demonstrated adequate completeness and quality for state capitals in Brazil (Almeida et al. 2025).
+
+Limitations include those inherent to ecological studies using secondary data. Misclassification of the underlying cause of death may affect estimates, particularly for conditions such as arrhythmias and cardiomyopathies where coding practices may vary across institutions and time. The study used population estimates between censuses that carry some uncertainty. Age-standardisation relied on assumed population proportions by age group, which may introduce bias if the true age distribution differs substantially. Furthermore, the study could not assess individual-level risk factors, comorbidities, or treatment histories, limiting causal inferences.
+
+In conclusion, cardiovascular mortality in Campo Grande increased significantly between 2013 and 2022, driven primarily by ischaemic heart disease. The high proportion of out-of-hospital IHD deaths, the increasing trends in arrhythmia-related mortality, and the exacerbation during the COVID-19 pandemic highlight critical gaps in cardiovascular care access and prevention in this Central-West capital. Future research should investigate the spatial distribution of deaths across neighbourhoods, the contribution of risk factor prevalence trends, and the effectiveness of emergency care networks in reducing prehospital cardiovascular mortality.
+
+
+ACKNOWLEDGEMENTS
+
+To the health surveillance teams of Campo Grande for maintaining the quality of the SIM database, and to the IBGE for providing population estimates.
+
+
+CONFLICTS OF INTEREST
+
+The authors declare no competing interests.
+
+
+AUTHORS' CONTRIBUTION
+
+JV — study design, data collection, data analysis, manuscript writing; EFO — study supervision, methodological guidance, manuscript revision; AV — data analysis, statistical modelling, code development, manuscript revision. All authors approved the final version.
+
+
+REFERENCES
+
+Ahmad OB, Boschi-Pinto C, Lopez AD, Murray CJL, Lozano R, Inoue M. 2001. Age standardization of rates: a new WHO standard. GPE Discussion Paper Series 31. Geneva: World Health Organization.
+
+Alencar AP, Souza HP, Fonseca L, Brant LCC. 2022. Covid-19 in Brazil in 2020: impact on deaths from cancer and cardiovascular diseases. Cad Saude Publica. 38(4): e00093921.
+
+Almeida JS, Santos JC, Silva GAP. 2025. Analysis of mortality by cardiovascular disease subgroups in Brazil before and during the COVID-19 pandemic (2000-2022) by sex and age group. BMC Cardiovasc Disord. 25: forthcoming.
+
+Almeida WS, Szwarcwald CL, Frias PG. 2025. Avaliação da qualidade do Sistema Brasileiro de Informações sobre Mortalidade (SIM): uma scoping review. Cienc Saude Coletiva. 30(1): e12342024.
+
+Antunes JLF, Cardoso MRA. 2015. Uso da análise de séries temporais em estudos epidemiológicos. Epidemiol Serv Saude. 24(3): 565-576.
+
+Brant LCC, Nascimento BR, Teixeira RA, Lopes MACQ, Malta DC, Oliveira GMM, Ribeiro ALP. 2020a. In- and Out-of-Hospital Deaths by Acute Myocardial Infarction in Brazilian State Capitals. Arq Bras Cardiol. 115(3): 478-485.
+
+Brant LCC, Nascimento BR, Teixeira RA, Lopes MACQ, Malta DC, Oliveira GMM, Ribeiro ALP. 2020b. Excess of cardiovascular deaths during the COVID-19 pandemic in Brazilian capital cities. Heart. 106(24): 1898-1905.
+
+Brant LCC, Ribeiro ALP, Nascimento BR, Oliveira GMM, Malta DC, Teixeira RA. 2021. Socioeconomic position and cardiovascular mortality in 63 million adults from Brazil. Heart. 107(15): 1250-1257.
+
+Brant LCC, Nascimento BR, Ribeiro ALP, Oliveira GMM, Malta DC, Velasquez-Melendez G, Teixeira RA. 2025. Cardiovascular diseases mortality in Brazilian municipalities: estimates from the Global Burden of Disease study, 2000-2018. Lancet Reg Health Am. 44: 100116.
+
+Cardoso LSM, Teixeira RA, Ribeiro ALP. 2021. Desigualdade social e mortalidade precoce por doenças cardiovasculares no Brasil. Rev Saude Publica. 55: 96.
+
+Duncan BB, Schmidt MI, Ewerton Cousin E, Moradi-Lakeh M, Passos VMA, França EB, Marinho F, Mokdad AH. 2016. Time trends in adult chronic disease inequalities by education in Brazil: 1998-2013. Int J Equity Health. 15: 182.
+
+Gaui EN, Oliveira GMM, Klein CH. 2021. Mortality Due to Heart Failure and Socioeconomic Development in Brazil between 1980 and 2018. Arq Bras Cardiol. 117(5): 944-951.
+
+Hilbe JM. 2011. Negative Binomial Regression. 2nd ed. Cambridge University Press. 553 pp.
+
+Kim HJ, Fay MP, Feuer EJ, Midthune DN. 2000. Permutation tests for joinpoint regression with applications to cancer rates. Stat Med. 19(3): 335-351.
+
+Lopez-Jaramillo P, Joseph P, Lopez-Lopez JP, Lanas F, Avezum A, Diaz R, Yusuf S. 2014. Cardiovascular disease in Latin America: the growing epidemic. Prog Cardiovasc Dis. 57(3): 262-267.
+
+Lotufo PA, Fernandes TG, Bando DH, Alencar AP, Bensenor IJM. 2021. Coronary heart disease and stroke mortality trends in Brazil 2000-2018. PLoS One. 16(8): e0253639.
+
+Lotufo PA, Bensenor IJM. 2024. Ethnicity and cardiovascular mortality in Brazil: a call for papers. Sao Paulo Med J. 142(1): e2024142.
+
+Malta DC, Teixeira RA, Oliveira GMM, Ribeiro ALP. 2022. Premature mortality due to four main non-communicable diseases and suicide in Brazil and its states from 1990 to 2019: A Global Burden of Disease Study. Rev Soc Bras Med Trop. 55: e0263-2021.
+
+Mansur AP, Favarato D. 2011. Trends in ischemic heart disease and stroke death ratios in Brazilian women and men. Clinics. 66(1): 63-68.
+
+Mansur AP, Favarato D. 2016. Trends in Mortality Rate from Cardiovascular Disease in Brazil, 1980-2012. Arq Bras Cardiol. 107(1): 20-25.
+
+Mansur AP, Favarato D. 2020. Trends in Mortality Rates from Cardiovascular Disease and Cancer between 2000 and 2015 in the Most Populous Capital Cities of the Five Regions of Brazil. Arq Bras Cardiol. 114(2): 199-206.
+
+Muggeo VMR. 2003. Estimating regression models with unknown break-points. Stat Med. 22(19): 3055-3071.
+
+Nascimento BR, Brant LCC, Oliveira GMM, Malachias MVB, Reis GMA, Teixeira RA, Malta DC, Ribeiro ALP. 2020. Reduction of mortality and predictions for acute myocardial infarction, stroke, and heart failure in Brazil until 2030. Sci Rep. 10: 16520.
+
+Nascimento JOV, Pereira GF, Lima SGF, Santos PM. 2022. Mortality from diseases of the circulatory system in Brazil and its relationship with social determinants focusing on vulnerability: an ecological study. BMC Public Health. 22: 1964.
+
+Normando PG, Araujo-Filho JA, Fonseca GA, Rodrigues REF, Oliveira VA, Hajjar LA, Salemi VMC, Bocchi EA. 2021. Reduction in Hospitalization and Increase in Mortality Due to Cardiovascular Diseases during the COVID-19 Pandemic in Brazil. Arq Bras Cardiol. 116(3): 371-380.
+
+Oliveira GMM, Brant LCC, Polanczyk CA, Biolo A, Nascimento BR, Malta DC, Ribeiro ALP. 2022. Cardiovascular Statistics — Brazil 2021. Arq Bras Cardiol. 118(1): 115-373.
+
+Oliveira GMM, Brant LCC, Polanczyk CA, Malta DC, Biolo A, Nascimento BR, Ribeiro ALP. 2024. Cardiovascular Statistics — Brazil 2023. Arq Bras Cardiol. 121(2): e20240079.
+
+R Core Team. 2025. R: A language and environment for statistical computing. R Foundation for Statistical Computing, Vienna, Austria.
+
+Rasella D, Harhay MO, Pamponet ML, Aquino R, Barreto ML. 2014. Impact of primary health care on mortality from heart and cerebrovascular diseases in Brazil: a nationwide analysis of longitudinal data. BMJ. 349: g4014.
+
+Roth GA, Mensah GA, Johnson CO, et al. 2020. Global Burden of Cardiovascular Diseases and Risk Factors, 1990-2019: Update From the GBD 2019 Study. J Am Coll Cardiol. 76(25): 2982-3021.
+
+Rubinstein AL, Khera R, Irazola V, Calandrelli M, Lanas F. 2025. Cardiovascular disease in the Americas: the epidemiology of cardiovascular disease and its risk factors. Lancet Reg Health Am. 42: 100960.
+
+Santo AH, Pinheiro CE, Rodrigues EM. 2024. Ischemic heart disease-related mortality in Brazil, 2006 to 2020. A study of multiple causes of death. BMC Public Health. 24: 809.
+
+Santos JC, Souza HP, Alencar AP. 2023. Cardiovascular mortality in Brazil during the COVID-19 pandemic: a comparison between underlying and multiple causes of death. Public Health. 224: 58-65.
+
+Santos JE, Brant LCC, Malta DC, Ribeiro ALP, Oliveira GMM. 2022. Sex Differences in Cardiovascular Disease Mortality in Brazil between 1996 and 2019. Int J Environ Res Public Health. 19(19): 12827.
+
+Santos SC, Ribeiro ALP, Brant LCC. 2025. Cardiovascular mortality in Brazil: trends from subgroups of cause of deaths and the role of social development. Discov Public Health. 22: 991.
+
+Silva JB, Santos PM, Nascimento JOV. 2024. Epidemiological Profile of Acute Myocardial Infarction Mortality from 2013 to 2023 in Brazil. Arch Community Med Public Health. 10(3): 314-320.
+
+Souza MFM, Alencar AP, Malta DC, Moura L, Mansur AP. 2016. Cardiovascular Health in Brazil: Trends and Perspectives. Circulation. 133(4): 422-433.
+
+Stevens B, Pezzullo L, Verdian L, Tomlinson J, Estrada-Quintero A, Baio G. 2022. Trends in mortality from heart failure in Brazil: 1998 to 2019. Rev Bras Epidemiol. 25: E220021.
+
+
+TABLE AND FIGURE LEGENDS
+
+Table I — Clinical and epidemiological characteristics of cardiovascular deaths by disease group, Campo Grande, MS, Brazil, 2013-2022.
+
+Table II — Crude and age-standardised mortality rates (per 100,000 population) by cardiovascular disease group and year, Campo Grande, MS, Brazil, 2013-2022.
+
+Table III — Time trend analysis results: annual percentage change (Poisson regression) and Prais-Winsten regression coefficients for cardiovascular mortality by disease group, Campo Grande, MS, Brazil, 2013-2022.
+
+Fig. 1: Temporal trends in cardiovascular mortality rates in Campo Grande, MS, Brazil, 2013-2022. (A) Overall crude mortality rate with linear trend line. (B) Mortality rates by cardiovascular disease group. IHD: ischaemic heart disease; HF: heart failure; ARR: arrhythmias; CMP: cardiomyopathies; INF: inflammatory heart diseases.
+
+Fig. 2: Cardiovascular mortality by sex, Campo Grande, MS, Brazil, 2013-2022. (A) Proportional distribution of deaths by sex across disease groups. (B) Sex-specific mortality rates over time.
+
+Fig. 3: Age-sex pyramid of cardiovascular deaths, Campo Grande, MS, Brazil, 2013-2022. Each bar represents the number of deaths in a given age group, with male deaths on the left and female deaths on the right.
+
+Fig. 4: Heatmap of cardiovascular disease-specific mortality rates (per 100,000 population) by year, Campo Grande, MS, Brazil, 2013-2022. Darker shading indicates higher rates.
+
+
+SUPPLEMENTARY MATERIAL
+
+Supplementary Fig. S1 — Proportional distribution of deaths by place of occurrence across cardiovascular disease groups.
+
+Supplementary Fig. S2 — Age density distribution of deaths by cardiovascular disease group.
+
+Supplementary Fig. S3 — Comparison of crude and age-standardised overall cardiovascular mortality rates, 2013-2022.
+
+Table S1 — Detailed distribution of deaths by ICD-10 three-character code within each cardiovascular disease group.
+
+Table S2 — Age-specific mortality rates (per 100,000 population) by cardiovascular disease group and year.
+
+Table S3 — Data completeness assessment for key variables.

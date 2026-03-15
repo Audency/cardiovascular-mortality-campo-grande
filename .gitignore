@@ -1,0 +1,15 @@
+# R
+.Rhistory
+.RData
+.Rproj.user
+*.Rproj
+
+# macOS
+.DS_Store
+
+# Arquivos TIFF grandes (usar PNG no repositório)
+figuras/*.tiff
+
+# Dados brutos sensíveis (se necessário)
+# dados_cardio.csv
+# dados_cardio.rds

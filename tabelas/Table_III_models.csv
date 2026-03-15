@@ -1,0 +1,11 @@
+"Group","Model","Result","p_value"
+"IHD","Poisson","APC: 4.31% (3.48 to 5.14)",1.76177073973627e-25
+"HF","Poisson","APC: -8.73% (-11.03 to -6.38)",2.1015580508275e-12
+"ARR","Poisson","APC: 9.54% (6.62 to 12.56)",4.37674499806492e-11
+"CMP","Poisson","APC: -3.79% (-6.66 to -0.83)",0.0123877140092199
+"INF","Poisson","APC: 8.42% (4.00 to 13.09)",0.000153392237465703
+"IHD","Prais-Winsten","β: 3.906 (SE: 0.711), Increasing",0.000915552234991919
+"HF","Prais-Winsten","β: -0.742 (SE: 0.468), Stationary",0.156897241945976
+"ARR","Prais-Winsten","β: 0.706 (SE: 0.121), Increasing",0.000638892506554629
+"CMP","Prais-Winsten","β: -0.258 (SE: 0.164), Stationary",0.159083707094979
+"INF","Prais-Winsten","β: 0.305 (SE: 0.055), Increasing",0.00090965124523114
